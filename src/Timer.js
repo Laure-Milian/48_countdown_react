@@ -7,7 +7,7 @@ class Timer extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {seconds: 2500};
+    this.state = {seconds: 1500};
     console.log(this.state);
   }
 
