@@ -2,31 +2,39 @@ import React, { Component } from 'react';
 import './Time.css';
 const SeparateMinutes = require('./SeparateMinutes');
 const ButtonStart = require('./ButtonStart');
+const ButtonStop = require('./ButtonStop');
 
-class Timer extends Component {
-  
+let IntervalID;
+
+class Timer extends Component {  
+
   constructor(props) {
     super(props);
     this.state = {seconds: 60};
     console.log(this.state);
   }
 
-  handleClick() {
-   setInterval(this.changeTime.bind(this), 1000);
+  handleClickStart() {
+   IntervalID = setInterval(this.changeTime.bind(this), 1000);
   }
 
   changeTime() {
-    let newSeconds = this.state.seconds - 1;
+    let newSeconds = this.state.seconds -1;
     this.setState(
       {seconds: newSeconds}
     );
+  }
+
+  handleClickStop() {
+    clearInterval(IntervalID);
   }
 
   render() {
     return (
       <div className="chrono">
         <SeparateMinutes allSeconds={this.state.seconds} />
-        <ButtonStart onClick={this.handleClick.bind(this)} />
+        <ButtonStart onClick={this.handleClickStart.bind(this)} />
+        <ButtonStop onClick={this.handleClickStop} />
       </div>
     )
   }
