@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Time.css';
-const Dial = require('./Dial');
+const SeparateMinutes = require('./SeparateMinutes');
 const ButtonStart = require('./ButtonStart');
 
 class Timer extends Component {
@@ -22,16 +22,10 @@ class Timer extends Component {
     );
   }
 
-  separateMinutes(allSeconds) {
-    let minutes = Math.floor(allSeconds / 60);
-    let seconds = allSeconds % 60;
-    return [minutes, seconds];
-  }
-
   render() {
     return (
       <div className="chrono">
-        <Dial seconds={this.separateMinutes(this.state.seconds)} />
+        <SeparateMinutes allSeconds={this.state.seconds} />
         <ButtonStart onClick={this.handleClick.bind(this)} />
       </div>
     )
