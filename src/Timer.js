@@ -7,7 +7,7 @@ class Timer extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {seconds: 1500};
+    this.state = {seconds: 60};
     console.log(this.state);
   }
 
@@ -22,10 +22,16 @@ class Timer extends Component {
     );
   }
 
+  separateMinutes(allSeconds) {
+    let minutes = Math.floor(allSeconds / 60);
+    let seconds = allSeconds % 60;
+    return [minutes, seconds];
+  }
+
   render() {
     return (
       <div className="chrono">
-        <Dial seconds={this.state.seconds} />
+        <Dial seconds={this.separateMinutes(this.state.seconds)} />
         <ButtonStart onClick={this.handleClick.bind(this)} />
       </div>
     )

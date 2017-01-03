@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
 
 class Dial extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			minutes: Math.ceil(this.props.seconds / 60),
-			seconds: this.props.seconds % 60
-		};
-		console.log(this.state);
-	}
+
 	render() {
-    	return (
-      		<div className='time_display'>
-      		<span className='minutes'>{this.state.minutes}</span>
-      		:
-        	<span className='seconds'>{this.state.seconds}</span>
-      		<div> Temps total en secondes : {this.props.seconds} </div>
-      	</div>
-    	);
-  	}
+		return (
+			<div className='time_display'>
+				<span className='minutes'>{this.props.seconds[0]}</span>
+				:
+				<span className='seconds'>{this.props.seconds[1]}</span>
+			</div>
+		);
+	}
+
 };
 
 module.exports = Dial;
